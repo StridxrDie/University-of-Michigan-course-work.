@@ -1,0 +1,20 @@
+import urllib
+import json
+
+url = 'http://python-data.dr-chuck.net/comments_188318.json'
+
+print 'Retrieving', url
+uh = urllib.urlopen(url)
+data = uh.read()
+print 'Retrieved',len(data),'characters'
+
+info = json.loads(str(data))
+
+print 'Count :', len(info["comments"])
+
+Total = 0
+
+for item in info["comments"] :
+    Total += item ["count"]
+    
+print 'Sum: ', Total
